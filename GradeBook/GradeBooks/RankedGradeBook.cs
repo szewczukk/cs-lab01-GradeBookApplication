@@ -31,15 +31,15 @@ namespace GradeBook.GradeBooks
             }
             
             var betterStudentsPercentage = (float)betterStudents / studentCount;
-            if(betterStudentsPercentage <= 0.2)
+            if (betterStudentsPercentage <= 0.2)
             {
                 return 'A';
             }
-            if(betterStudentsPercentage > 0.2 && betterStudentsPercentage <= 0.4)
+            if (betterStudentsPercentage > 0.2 && betterStudentsPercentage <= 0.4)
             {
                 return 'B';
             }
-            if(betterStudentsPercentage > 0.4 && betterStudentsPercentage <= 0.6)
+            if (betterStudentsPercentage > 0.4 && betterStudentsPercentage <= 0.6)
             {
                 return 'C';
             }
@@ -48,6 +48,16 @@ namespace GradeBook.GradeBooks
                 return 'D';
             }
             return 'F';
+        }
+
+        public override void CalculateStatistics()
+        {
+            if (Students.Count < 5)
+            {
+                Console.WriteLine("Ranked grading requires at least 5 students.");
+                return;
+            }
+            base.CalculateStatistics();
         }
     }
 }
