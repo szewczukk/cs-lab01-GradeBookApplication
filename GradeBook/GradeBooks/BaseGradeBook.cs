@@ -109,7 +109,7 @@ namespace GradeBook.GradeBooks
             }
         }
 
-        public virtual double GetGPA(char letterGrade, StudentType studentType)
+        private double GetBaseGPA(char letterGrade)
         {
             switch (letterGrade)
             {
@@ -125,6 +125,16 @@ namespace GradeBook.GradeBooks
                     return 0;
             }
             return 0;
+        }
+
+        public virtual double GetGPA(char letterGrade, StudentType studentType)
+        {
+            var addition = 0;
+            if (IsWeighted && (studentType == StudentType.Honors || studentType == StudentType.DualEnrolled))
+            {
+                addition = 1;
+            }
+            return GetBaseGPA(letterGrade) + addition;
         }
 
         public virtual void CalculateStatistics()
