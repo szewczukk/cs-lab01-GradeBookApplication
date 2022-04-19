@@ -30,7 +30,7 @@ namespace GradeBook.GradeBooks
                 }
             }
             
-            var betterStudentsPercentage = betterStudents / studentCount;
+            var betterStudentsPercentage = (float)betterStudents / studentCount;
             if(betterStudentsPercentage <= 0.2)
             {
                 return 'A';
